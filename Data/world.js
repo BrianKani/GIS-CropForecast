@@ -1,4 +1,3 @@
-// No need to import ee when running in the Earth Engine Code Editor
 
 var export_oneimage = function(img, folder, name, region, scale, crs) {
   var task = ee.batch.Export.image.toDrive({
@@ -28,7 +27,7 @@ var world_region = ee.FeatureCollection('ft:1tdSwUL7MVpOauSgRzqVTOwdfy17KDbw-1d9
 
 var imgcoll = ee.ImageCollection('MODIS/MOD09A1')
     .filterBounds(ee.Geometry.Rectangle(-106.5, 50, -64, 23))
-    .filterDate('2001-12-31', '2015-12-31');
+    .filterDate('2014-12-31', '2020-12-31');
 var img = imgcoll.min().max(0).clip(world_region.geometry());
 
 locations.getInfo().features.forEach(function(location) {
